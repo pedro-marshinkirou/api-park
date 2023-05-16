@@ -586,7 +586,7 @@
                   {
                     "in": "path",
                     "name": "idPark",
-                    "type": "Object",
+                    "type": "string",
                     "description": "Park ID",
                     "required": true
                   },
