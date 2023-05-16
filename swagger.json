@@ -1,0 +1,688 @@
+{
+    "openapi":"3.0.0",
+    "info":{
+        "title":"PARK API DOC",
+        "description": "test api",
+        "contact":{
+            "email":"pedropaulovalente007@gmail.com"
+        },
+        "version":"1.0.0"
+    },
+    "servers":[
+        {
+            "url":"http://localhost:5000",
+            "description":"Bocal Server"
+        }
+    ],
+    "paths":{
+        "/user": {
+            "post": {
+                "summary": "Create a new user",
+                "description": "Route responsible for creating a new user",
+                "tags": ["Users"],
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/User"
+                      },
+                      "examples": {
+                        "Users": {
+                          "value": {
+                            "name": "Cacau Lima",
+                            "username": "cacode",
+                            "password": "1234567",
+                            "telefone": "98767655432",
+                            "email": "clima@gmail.com",
+                            "modelo": "ranger",
+                            "placa": "XXY5965",
+                            "avatar": "https://i.imgur.com/Ry1cb5M.png",
+                            "background": "https://images.wallpapersden.com/image/download/triangle-8k-blue-pattern_bGZlbmiUmZqaraWkpJRmbmdlrWZlbWU.jpg"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "201": {
+                    "description": "Created",
+                    "content": {
+                      "application/json": {
+                        "schemma": {
+                          "type": "object",
+                          "$ref": "#/components/schemas/User"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/userget":{
+            "get": {
+                "summary": "Search all users",
+                "description": "Route responsible for fetching all users",
+                "tags": ["Users"],
+                "security": [{ "bearerAuth": [] }],
+                "responses": {
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/User"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/getum/{id}":{
+            "get": {
+                "summary": "Search user by id",
+                "description": "Route responsible for searching for user by id",
+                "tags": ["Users"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "description": "User ID",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "$ref": "#/components/schemas/User"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/{id}":{
+            "patch": {
+                "summary": "Update user by id",
+                "description": "Route responsible for editing the user by id",
+                "tags": ["Users"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "description": "User ID",
+                    "required": true
+                  }
+                ],
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/User"
+                      },
+                      "examples": {
+                        "Users": {
+                          "value": {
+                            "name": "Xeno Saga"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "object",
+                          "$ref": "#/components/schemas/User"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/login_auth":{
+            "post": {
+                "summary": "Login to ParkWAY",
+                "description": "Route responsible for logging in a registered user",
+                "tags": ["Auth"],
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/User"
+                      },
+                      "examples": {
+                        "User": {
+                          "value": {
+                            "email": "WELTALL@gmail.com",
+                            "password": "1234567"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK"
+                  }
+                }
+              }
+        },
+        "/cadpark":{
+            "post": {
+                "summary": "Create a new PARK",
+                "description": "Route responsible for creating a new News",
+                "tags": ["Park"],
+                "security": [{ "bearerAuth": [] }],
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Park"
+                      },
+                      "examples": {
+                        "News": {
+                          "value": {
+                            "user": "",
+                            "banner": "https://labs.tadigital.com/wp-content/uploads/2017/07/ES6-banner.jpg",
+                            "title": "ECMAScript 6",
+                            "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            "likes": [],
+                            "comments": []
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "201": {
+                    "description": "Created",
+                    "content": {
+                      "application/json": {
+                        "schemma": {
+                          "type": "object",
+                          "$ref": "#/components/schemas/News"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/getparks":{
+            "get": {
+                "summary": "Search all parks",
+                "description": "Route responsible for fetching all posts",
+                "tags": ["Park"],
+                "parameters": [
+                  {
+                    "in": "query",
+                    "name": "limit",
+                    "type": "string"
+                  },
+                  {
+                    "in": "query",
+                    "name": "offset",
+                    "type": "string"
+                  }
+                ],
+                "responses": {
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Park"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/mv":{
+            "get": {
+                "summary": "Search top Parks",
+                "description": "Route responsible for fetching top News",
+                "tags": ["Park"],
+                "responses": {
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK",
+                    "content": {
+                      "application/json": {
+                        "schemma": {
+                          "type": "object",
+                          "$ref": "#/components/schemas/Park"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/searchfor":{
+            "get": {
+                "summary": "Search Parks by title",
+                "description": "Route responsible for fetching the parks that match the title sent via query params",
+                "tags": ["Park"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                  {
+                    "in": "query",
+                    "name": "title",
+                    "type": "string",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Park"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/madebyuser":{
+            "get": {
+                "summary": "Search parks created by user using his id",
+                "description": "Route responsible for fetching parks by use id",
+                "tags": ["Park"],
+                "security": [{ "bearerAuth": [] }],
+                "responses": {
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "200": {
+                    "description": "OK",
+                    "content": {
+                      "application/json": {
+                        "schema": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "#/components/schemas/Park"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }  
+        },
+        "/search/{id}":{
+            "get": {
+                "summary": "Search PARKS by id",
+                "description": "Route responsible for fetching PARKS by id",
+                "tags": ["Park"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "description": "News ID",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK",
+                    "content": {
+                      "application/json": {
+                        "schemma": {
+                          "type": "object",
+                          "$ref": "#/components/schemas/Park"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/updt/{id}":{
+            "patch": {
+                "summary": "Update a PARK",
+                "description": "Route responsible for updating a PARK",
+                "tags": ["Park"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "description": "Post ID",
+                    "required": true
+                  }
+                ],
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Park"
+                      },
+                      "examples": {
+                        "Post": {
+                          "value": {
+                            "banner": "Edit",
+                            "title": "Edit",
+                            "text": "Edit"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK",
+                    "content": {
+                      "application/json": {
+                        "schemma": {
+                          "type": "object",
+                          "$ref": "#/components/schemas/News"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+        },
+        "/delestac/{id}":{
+            "delete": {
+                "summary": "Delete a PARK",
+                "description": "Route responsible for deleting a PARK",
+                "tags": ["Park"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "description": "News ID",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK"
+                  }
+                }
+              }
+        },
+        "/evaluate/{id}":{
+            "patch": {
+                "summary": "Like a park",
+                "description": "Route responsible for liking a park",
+                "tags": ["Park"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "description": "User ID",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK"
+                  }
+                }
+              }
+        },
+        "/saysay/{id}":{
+            "patch": {
+                "summary": "Comment on a PARK",
+                "description": "Route responsible for commenting on a PARK",
+                "tags": ["Park"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "id",
+                    "type": "string",
+                    "description": "News ID",
+                    "required": true
+                  }
+                ],
+                "requestBody": {
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "$ref": "#/components/schemas/Comment"
+                      },
+                      "examples": {
+                        "Comment": {
+                          "value": {
+                            "message": "Comentário legal"
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "responses": {
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK"
+                  }
+                }
+              }
+        },
+        "/notsay/{id}/{idcomm}":{
+            "patch": {
+                "summary": "remove a comment on a park",
+                "description": "Route responsible for remove a comment on a park",
+                "tags": ["Park"],
+                "security": [{ "bearerAuth": [] }],
+                "parameters": [
+                  {
+                    "in": "path",
+                    "name": "idNews",
+                    "type": "string",
+                    "description": "News ID",
+                    "required": true
+                  },
+                  {
+                    "in": "path",
+                    "name": "idComment",
+                    "type": "string",
+                    "description": "Comment ID",
+                    "required": true
+                  }
+                ],
+                "responses": {
+                  "401": {
+                    "description": "Unauthorized"
+                  },
+                  "400": {
+                    "description": "Not Found"
+                  },
+                  "200": {
+                    "description": "OK"
+                  }
+                }
+              }
+        }
+        },
+    "components":{
+        "securitySchemes": {
+            "bearerAuth": {
+              "type": "http",
+              "scheme": "bearer",
+              "bearerFormat": "JWT"
+            }
+          },
+          "schemas": {
+            "User": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                },
+                "telefone": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "modelo": {
+                    "type": "string"
+                },
+                "placa": {
+                    "type": "string"
+                },
+                "avatar": {
+                  "type": "string"
+                },
+                "background": {
+                  "type": "string"
+                }
+              }
+            },
+            "Park": {
+              "type": "object",
+              "properties": {
+                "user": {
+                  "type": "string"
+                },
+                "profpic": {
+                  "type": "string"
+                },
+                "title": {
+                  "type": "string"
+                },
+                "description": {
+                  "type": "string"
+                },
+                "likes": {
+                  "type": "number"
+                },
+                "comments": {
+                  "type": "array"
+                },
+                "Criado": {
+                  "type": "date"
+                }
+              }
+            },
+            "Comment": {
+              "type": "object",
+              "properties": {
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+    }
+}
