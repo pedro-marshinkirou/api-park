@@ -551,7 +551,7 @@
                   "content": {
                     "application/json": {
                       "schema": {
-                        "$ref": "#/components/schemas/Comment"
+                        "$ref": "#/components/schemas/Park"
                       },
                       "examples": {
                         "Comment": {
