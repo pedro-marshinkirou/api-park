@@ -585,16 +585,16 @@
                 "parameters": [
                   {
                     "in": "path",
-                    "name": "idNews",
-                    "type": "string",
-                    "description": "News ID",
+                    "name": "idPark",
+                    "type": "Object",
+                    "description": "Park ID",
                     "required": true
                   },
                   {
                     "in": "path",
-                    "name": "idComment",
+                    "name": "idcomm",
                     "type": "string",
-                    "description": "Comment ID",
+                    "description": "Comm ID",
                     "required": true
                   }
                 ],
