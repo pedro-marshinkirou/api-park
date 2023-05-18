@@ -297,12 +297,14 @@ const mongoose = require("mongoose");
             var luseu = req.params;
             var idPark = mongoose.Types.ObjectId(luseu);
             console.log(idPark + 'idEstacionamento');
+            console.log(typeof idPark);
             var liet = req.userid;
             var id = mongoose.Types.ObjectId(liet);
             console.log(id + 'idusuário');
+            console.log(typeof id);
             var { idcomm } = req.params;
             console.log(idcomm + 'id comentário');
-
+            console.log(typeof idcomm);
             var delcom = await parkServ.dellcommalgo(id, idcomm, idPark);
             console.log(delcom);
 
