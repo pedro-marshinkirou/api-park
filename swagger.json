@@ -230,10 +230,10 @@
                       "examples": {
                         "News": {
                           "value": {
-                            "user": "",
-                            "banner": "https://labs.tadigital.com/wp-content/uploads/2017/07/ES6-banner.jpg",
+                            "usuario": "",
+                            "profpic": "https://labs.tadigital.com/wp-content/uploads/2017/07/ES6-banner.jpg",
                             "title": "ECMAScript 6",
-                            "text": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+                            "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
                             "likes": [],
                             "comments": []
                           }
@@ -446,9 +446,9 @@
                       "examples": {
                         "Post": {
                           "value": {
-                            "banner": "Edit",
+                            "profpic": "Edit",
                             "title": "Edit",
-                            "text": "Edit"
+                            "description": "Edit"
                           }
                         }
                       }
@@ -656,7 +656,7 @@
             "Park": {
               "type": "object",
               "properties": {
-                "user": {
+                "usuario": {
                   "type": "string"
                 },
                 "profpic": {
@@ -679,10 +679,10 @@
                 }
               }
             },
-            "Comment": {
+            "Comments": {
               "type": "object",
               "properties": {
-                "message": {
+                "comment": {
                   "type": "string"
                 }
               }
